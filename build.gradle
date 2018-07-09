@@ -26,6 +26,7 @@ repositories {
 ext {
     springfoxVersion = '2.8.0'
     restAssuredVersion = '3.1.0'
+	cucumberVersion = '3.0.2'
 }
 
 dependencies {
@@ -42,4 +43,19 @@ dependencies {
     testCompile("io.rest-assured:rest-assured:${restAssuredVersion}")
     compile("io.rest-assured:json-path:${restAssuredVersion}")
     testCompile("io.rest-assured:json-schema-validator:${restAssuredVersion}")
+
+	testCompile("io.cucumber:cucumber-jvm:${cucumberVersion}")
+	testCompile("io.cucumber:cucumber-core:${cucumberVersion}")
+	testCompile("io.cucumber:cucumber-java:${cucumberVersion}")
+	testCompile("io.cucumber:cucumber-junit:${cucumberVersion}")
+}
+
+task cucumber(dependsOn: testClasses) {
+	doLast {
+		javaexec {
+			main = "cucumber.api.cli.Main"
+			classpath = configurations.testRuntimeClasspath + sourceSets.main.output + sourceSets.test.output
+			args = ['--plugin', 'pretty', '--glue', 'com.andvicente.springboot2rest.cucumber.steps', 'src/test/resources']
+		}
+	}
 }
