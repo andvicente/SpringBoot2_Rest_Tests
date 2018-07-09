@@ -24,6 +24,10 @@ API Rest para Testes de API utilizando Cucumber e Rest-Assured
                 |-- *.features //BDD - Gherking
 ```
 
+### Instalação Cucumber for Java
+IntelliJ IDEA > Preferences > Plugins > Browse Repositories > Cucumber for Java
+![Cucumber Java](IntellijIDEA_CucumberJava.png)
+
 ### Referência
 * Spring Boot 2: http://www.springboottutorial.com/spring-boot-crud-rest-service-with-jpa-hibernate
 * Swagger: https://dzone.com/articles/spring-boot-restful-api-documentation-with-swagger
