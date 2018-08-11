@@ -36,17 +36,27 @@ public class StudentTests {
         verifyStudent(student);
     }
 
-    private void verifyStudent(Student student) {
-        Student body = when().get("/students/"+student.getId()).
-               as(Student.class);
-        assertEquals(body,student);
-    }
-
     @Test
     public void retrieveStudentNotFound(){
         when().
                 get("/students/1002").
         then().statusCode(404);
+    }
+
+    @Test
+    public void registerStudent(){
+
+    }
+
+    @Test
+    public void removeStudent(){
+
+    }
+
+    private void verifyStudent(Student student) {
+        Student body = when().get("/students/"+student.getId()).
+                as(Student.class);
+        assertEquals(body,student);
     }
 
 }
